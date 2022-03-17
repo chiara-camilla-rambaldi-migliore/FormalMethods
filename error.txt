@@ -1,0 +1,567 @@
+(Lab) camir@MacBook-Air Lab % env "CFLAGS=-I/opt/homebrew/include -L/opt/homebrew/lib" pysmt-install --msat
+/Users/camir/.local/share/virtualenvs/Lab-2_6izkbj/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+This script allows you to install the solvers supported by pySMT.
+
+By executing this script, you confirm that you have read and agreed
+with the licenses of each solver.
+
+Notice: the installation process might require building tools
+        (e.g., make and gcc).
+
+Continue? [Y]es/[N]o: y
+running build_ext
+building '_mathsat' extension
+clang -Wno-unused-result -Wsign-compare -Wunreachable-code -fno-common -dynamic -DNDEBUG -g -fwrapv -O3 -Wall -iwithsysroot/System/Library/Frameworks/System.framework/PrivateHeaders -iwithsysroot/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/Headers -arch arm64 -arch x86_64 -Werror=implicit-function-declaration -I/opt/homebrew/include -L/opt/homebrew/lib -DSWIG=1 -I../include -I/Users/camir/.local/share/virtualenvs/Lab-2_6izkbj/include -I/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.8/include/python3.8 -c mathsat_python_wrap.c -o build/temp.macosx-10.14-arm64-3.8/mathsat_python_wrap.o
+clang: warning: argument unused during compilation: '-L/opt/homebrew/lib' [-Wunused-command-line-argument]
+mathsat_python_wrap.c:3599:16: warning: comparison of integers of different signs: 'msat_visit_status' and 'int' [-Wsign-compare]
+    if (retval == -1) {
+        ~~~~~~ ^  ~~
+mathsat_python_wrap.c:5418:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5419:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5420:11: warning: unused variable 'out_width' [-Wunused-variable]
+  size_t *out_width ;
+          ^
+mathsat_python_wrap.c:5480:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5481:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5482:14: warning: unused variable 'out_itp' [-Wunused-variable]
+  msat_type *out_itp ;
+             ^
+mathsat_python_wrap.c:5483:14: warning: unused variable 'out_etp' [-Wunused-variable]
+  msat_type *out_etp ;
+             ^
+mathsat_python_wrap.c:5559:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5560:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5561:11: warning: unused variable 'out_exp_width' [-Wunused-variable]
+  size_t *out_exp_width ;
+          ^
+mathsat_python_wrap.c:5562:11: warning: unused variable 'out_mant_width' [-Wunused-variable]
+  size_t *out_mant_width ;
+          ^
+mathsat_python_wrap.c:5710:13: warning: unused variable 't' [-Wunused-variable]
+  msat_type t ;
+            ^
+mathsat_python_wrap.c:7015:9: warning: variable 'arg3' is uninitialized when used here [-Wuninitialized]
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:6948:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:10934:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!argp2) {
+        ^~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10934:5: note: remove the 'if' if its condition is always false
+    if (!argp2) {
+    ^~~~~~~~~~~~~
+mathsat_python_wrap.c:10931:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!SWIG_IsOK(res2)) {
+        ^~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10931:5: note: remove the 'if' if its condition is always false
+    if (!SWIG_IsOK(res2)) {
+    ^~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10923:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!argp1) {
+        ^~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10923:5: note: remove the 'if' if its condition is always false
+    if (!argp1) {
+    ^~~~~~~~~~~~~
+mathsat_python_wrap.c:10920:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!SWIG_IsOK(res1)) {
+        ^~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10920:5: note: remove the 'if' if its condition is always false
+    if (!SWIG_IsOK(res1)) {
+    ^~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10917:7: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:msat_existentially_quantify",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10917:3: note: remove the 'if' if its condition is always false
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:msat_existentially_quantify",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10903:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:11056:9: warning: variable 'arg3' is uninitialized when used here [-Wuninitialized]
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10989:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:11468:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:11469:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:11470:9: warning: unused variable 'out' [-Wunused-variable]
+  mpq_t out ;
+        ^
+mathsat_python_wrap.c:11471:7: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+  int result;
+      ^
+mathsat_python_wrap.c:12049:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:12050:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:12051:9: warning: unused variable 'out_mod' [-Wunused-variable]
+  mpz_t out_mod ;
+        ^
+mathsat_python_wrap.c:12589:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:12590:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:12591:11: warning: unused variable 'out_msb' [-Wunused-variable]
+  size_t *out_msb ;
+          ^
+mathsat_python_wrap.c:12592:11: warning: unused variable 'out_lsb' [-Wunused-variable]
+  size_t *out_lsb ;
+          ^
+mathsat_python_wrap.c:12631:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13477:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13478:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13479:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13514:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13537:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13538:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13539:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13574:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13597:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13598:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13599:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13634:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13657:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13658:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13659:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13694:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:15762:13: warning: unused variable 'd' [-Wunused-variable]
+  msat_decl d ;
+            ^
+mathsat_python_wrap.c:15799:13: warning: unused variable 'd' [-Wunused-variable]
+  msat_decl d ;
+            ^
+mathsat_python_wrap.c:15836:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:15997:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:15998:13: warning: unused variable 'term' [-Wunused-variable]
+  msat_term term ;
+            ^
+mathsat_python_wrap.c:16050:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16051:13: warning: unused variable 'term' [-Wunused-variable]
+  msat_term term ;
+            ^
+mathsat_python_wrap.c:16217:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16218:15: warning: unused variable 'data' [-Wunused-variable]
+  char const *data ;
+              ^
+mathsat_python_wrap.c:16219:11: warning: unused variable 'out_n' [-Wunused-variable]
+  size_t *out_n ;
+          ^
+mathsat_python_wrap.c:16220:11: warning: unused variable 'out_names' [-Wunused-variable]
+  char ***out_names ;
+          ^
+mathsat_python_wrap.c:16221:15: warning: unused variable 'out_terms' [-Wunused-variable]
+  msat_term **out_terms ;
+              ^
+mathsat_python_wrap.c:16415:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16416:15: warning: unused variable 'data' [-Wunused-variable]
+  char const *data ;
+              ^
+mathsat_python_wrap.c:16417:11: warning: unused variable 'out_n' [-Wunused-variable]
+  size_t *out_n ;
+          ^
+mathsat_python_wrap.c:16418:15: warning: unused variable 'out_terms' [-Wunused-variable]
+  msat_term **out_terms ;
+              ^
+mathsat_python_wrap.c:16419:11: warning: unused variable 'out_annots' [-Wunused-variable]
+  char ***out_annots ;
+          ^
+mathsat_python_wrap.c:17118:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17119:11: warning: unused variable 'num_asserted' [-Wunused-variable]
+  size_t *num_asserted ;
+          ^
+mathsat_python_wrap.c:17172:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17173:11: warning: unused variable 'num_tlemmas' [-Wunused-variable]
+  size_t *num_tlemmas ;
+          ^
+mathsat_python_wrap.c:17678:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17679:11: warning: unused variable 'core_size' [-Wunused-variable]
+  size_t *core_size ;
+          ^
+mathsat_python_wrap.c:17786:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17787:11: warning: unused variable 'assumps_size' [-Wunused-variable]
+  size_t *assumps_size ;
+          ^
+73 warnings generated.
+mathsat_python_wrap.c:3599:16: warning: comparison of integers of different signs: 'msat_visit_status' and 'int' [-Wsign-compare]
+    if (retval == -1) {
+        ~~~~~~ ^  ~~
+mathsat_python_wrap.c:5418:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5419:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5420:11: warning: unused variable 'out_width' [-Wunused-variable]
+  size_t *out_width ;
+          ^
+mathsat_python_wrap.c:5480:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5481:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5482:14: warning: unused variable 'out_itp' [-Wunused-variable]
+  msat_type *out_itp ;
+             ^
+mathsat_python_wrap.c:5483:14: warning: unused variable 'out_etp' [-Wunused-variable]
+  msat_type *out_etp ;
+             ^
+mathsat_python_wrap.c:5559:12: warning: unused variable 'env' [-Wunused-variable]
+  msat_env env ;
+           ^
+mathsat_python_wrap.c:5560:13: warning: unused variable 'tp' [-Wunused-variable]
+  msat_type tp ;
+            ^
+mathsat_python_wrap.c:5561:11: warning: unused variable 'out_exp_width' [-Wunused-variable]
+  size_t *out_exp_width ;
+          ^
+mathsat_python_wrap.c:5562:11: warning: unused variable 'out_mant_width' [-Wunused-variable]
+  size_t *out_mant_width ;
+          ^
+mathsat_python_wrap.c:5710:13: warning: unused variable 't' [-Wunused-variable]
+  msat_type t ;
+            ^
+mathsat_python_wrap.c:7015:9: warning: variable 'arg3' is uninitialized when used here [-Wuninitialized]
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:6948:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:10934:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!argp2) {
+        ^~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10934:5: note: remove the 'if' if its condition is always false
+    if (!argp2) {
+    ^~~~~~~~~~~~~
+mathsat_python_wrap.c:10931:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!SWIG_IsOK(res2)) {
+        ^~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10931:5: note: remove the 'if' if its condition is always false
+    if (!SWIG_IsOK(res2)) {
+    ^~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10923:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!argp1) {
+        ^~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10923:5: note: remove the 'if' if its condition is always false
+    if (!argp1) {
+    ^~~~~~~~~~~~~
+mathsat_python_wrap.c:10920:9: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+    if (!SWIG_IsOK(res1)) {
+        ^~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10920:5: note: remove the 'if' if its condition is always false
+    if (!SWIG_IsOK(res1)) {
+    ^~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10917:7: warning: variable 'arg3' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:msat_existentially_quantify",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10979:9: note: uninitialized use occurs here
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10917:3: note: remove the 'if' if its condition is always false
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:msat_existentially_quantify",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mathsat_python_wrap.c:10903:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:11056:9: warning: variable 'arg3' is uninitialized when used here [-Wuninitialized]
+    if (arg3) free(arg3);
+        ^~~~
+mathsat_python_wrap.c:10989:18: note: initialize the variable 'arg3' to silence this warning
+  msat_term *arg3 ;
+                 ^
+                  = NULL
+mathsat_python_wrap.c:11468:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:11469:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:11470:9: warning: unused variable 'out' [-Wunused-variable]
+  mpq_t out ;
+        ^
+mathsat_python_wrap.c:11471:7: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+  int result;
+      ^
+mathsat_python_wrap.c:12049:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:12050:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:12051:9: warning: unused variable 'out_mod' [-Wunused-variable]
+  mpz_t out_mod ;
+        ^
+mathsat_python_wrap.c:12589:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:12590:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:12591:11: warning: unused variable 'out_msb' [-Wunused-variable]
+  size_t *out_msb ;
+          ^
+mathsat_python_wrap.c:12592:11: warning: unused variable 'out_lsb' [-Wunused-variable]
+  size_t *out_lsb ;
+          ^
+mathsat_python_wrap.c:12631:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13477:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13478:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13479:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13514:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13537:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13538:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13539:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13574:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13597:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13598:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13599:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13634:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:13657:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:13658:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:13659:11: warning: unused variable 'out_amount' [-Wunused-variable]
+  size_t *out_amount ;
+          ^
+mathsat_python_wrap.c:13694:5: warning: code will never be executed [-Wunreachable-code]
+    free(arg3);
+    ^~~~
+mathsat_python_wrap.c:15762:13: warning: unused variable 'd' [-Wunused-variable]
+  msat_decl d ;
+            ^
+mathsat_python_wrap.c:15799:13: warning: unused variable 'd' [-Wunused-variable]
+  msat_decl d ;
+            ^
+mathsat_python_wrap.c:15836:13: warning: unused variable 't' [-Wunused-variable]
+  msat_term t ;
+            ^
+mathsat_python_wrap.c:15997:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:15998:13: warning: unused variable 'term' [-Wunused-variable]
+  msat_term term ;
+            ^
+mathsat_python_wrap.c:16050:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16051:13: warning: unused variable 'term' [-Wunused-variable]
+  msat_term term ;
+            ^
+mathsat_python_wrap.c:16217:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16218:15: warning: unused variable 'data' [-Wunused-variable]
+  char const *data ;
+              ^
+mathsat_python_wrap.c:16219:11: warning: unused variable 'out_n' [-Wunused-variable]
+  size_t *out_n ;
+          ^
+mathsat_python_wrap.c:16220:11: warning: unused variable 'out_names' [-Wunused-variable]
+  char ***out_names ;
+          ^
+mathsat_python_wrap.c:16221:15: warning: unused variable 'out_terms' [-Wunused-variable]
+  msat_term **out_terms ;
+              ^
+mathsat_python_wrap.c:16415:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:16416:15: warning: unused variable 'data' [-Wunused-variable]
+  char const *data ;
+              ^
+mathsat_python_wrap.c:16417:11: warning: unused variable 'out_n' [-Wunused-variable]
+  size_t *out_n ;
+          ^
+mathsat_python_wrap.c:16418:15: warning: unused variable 'out_terms' [-Wunused-variable]
+  msat_term **out_terms ;
+              ^
+mathsat_python_wrap.c:16419:11: warning: unused variable 'out_annots' [-Wunused-variable]
+  char ***out_annots ;
+          ^
+mathsat_python_wrap.c:17118:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17119:11: warning: unused variable 'num_asserted' [-Wunused-variable]
+  size_t *num_asserted ;
+          ^
+mathsat_python_wrap.c:17172:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17173:11: warning: unused variable 'num_tlemmas' [-Wunused-variable]
+  size_t *num_tlemmas ;
+          ^
+mathsat_python_wrap.c:17678:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17679:11: warning: unused variable 'core_size' [-Wunused-variable]
+  size_t *core_size ;
+          ^
+mathsat_python_wrap.c:17786:12: warning: unused variable 'e' [-Wunused-variable]
+  msat_env e ;
+           ^
+mathsat_python_wrap.c:17787:11: warning: unused variable 'assumps_size' [-Wunused-variable]
+  size_t *assumps_size ;
+          ^
+73 warnings generated.
+clang++ -bundle -undefined dynamic_lookup -arch arm64 -arch x86_64 -Wl,-headerpad,0x1000 -I/opt/homebrew/include -L/opt/homebrew/lib build/temp.macosx-10.14-arm64-3.8/mathsat_python_wrap.o -L../lib -lmathsat -lgmpxx -lgmp -o build/lib.macosx-10.14-arm64-3.8/_mathsat.cpython-38-darwin.so
+ld: warning: ignoring file ../lib/libmathsat.dylib, building for macOS-arm64 but attempting to link with file built for macOS-x86_64
+ld: warning: dylib (/opt/homebrew/lib/libgmpxx.dylib) was built for newer macOS version (12.0) than being linked (11.0)
+ld: warning: dylib (/opt/homebrew/lib/libgmp.dylib) was built for newer macOS version (12.0) than being linked (11.0)
+ld: warning: ignoring file /opt/homebrew/lib/libgmpxx.dylib, building for macOS-x86_64 but attempting to link with file built for macOS-arm64
+ld: warning: ignoring file /opt/homebrew/lib/libgmp.dylib, building for macOS-x86_64 but attempting to link with file built for macOS-arm64
+
+
+
+
+(Lab) camir@MacBook-Air Lab % pysmt-install --check                                                       
+/Users/camir/.local/share/virtualenvs/Lab-2_6izkbj/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+Installed Solvers:
+  msat      False (None)              Not in Python's path!
+  cvc4      False (None)              Not in Python's path!
+  z3        False (None)              Not in Python's path!
+  yices     False (None)              Not in Python's path!
+  btor      False (None)              Not in Python's path!
+  picosat   False (None)              Not in Python's path!
+  bdd       False (None)              Not in Python's path!
+
+Solvers: 
+Quantifier Eliminators: shannon, selfsub
+UNSAT-Cores: 
+Interpolators: 
+(Lab) camir@MacBook-Air Lab % 
