@@ -26,10 +26,11 @@ msat.add_assertion(
 
 # 2. The four students are Iris, the person who received the $40,000 scholarship, the student who will major in Archaeology and the student who received the $35,000 scholarship.
 iris_arch = Or([And(var[f"sp{i}i"], var[f"sm{i}a"]) for i in range(0,4)])
+temp = Or([Or(var[f"sp{i}i"], var[f"sm{i}a"]) for i in range(2,4)])
 msat.add_assertion(
 	Not(
 		Or(
-			[Or(var[f"sp{i}i"], var[f"sm{i}a"]) for i in range(2,4)], 
+			temp,
 			iris_arch
 		)
 	)
@@ -69,39 +70,38 @@ for j in "aemp":
 
 
 # Optional (but strongly suggested): prettify the results
-companies = {"a": "Alpha Plus", "l":"Laneplex", "s": "Sancode", "i": "Streeter Inc."}
-roles = {"c": "copywriter", 'g':'graphic design', 'r':'sales rep', 'm': 'social media'}
+people = {"e": "Erma", "i":"Iris", "k": "Kerry", "t": "Tracy"}
+majors = {"a": "Archaeology", 'e':'English', 'm':'Mathematics', 'p': 'Physics'}
 
 res = msat.solve()
 if res:
 	sat_model = {el[0].symbol_name():el[1] for el in msat.get_model()}
 	for i in range(0,4):
-		for j in "alsi":
-			if sat_model["dc{}{}".format(i,j)] == Bool(True):
-				final_answer[i] = final_answer[i] + companies[j] + " - "
-		for j in "cgrm":
-			if sat_model["dr{}{}".format(i,j)] == Bool(True):
-				final_answer[i] = final_answer[i] + roles[j]
+		for j in "eikt":
+			if sat_model["sp{}{}".format(i,j)] == Bool(True):
+				final_answer[i] = final_answer[i] + people[j] + " - "
+		for j in "aemp":
+			if sat_model["sm{}{}".format(i,j)] == Bool(True):
+				final_answer[i] = final_answer[i] + majors[j]
 	print("\n".join(final_answer))
 else:
 	print("UNSAT")
 
-# # OPTIONAL: is the solution unique?
-# msat.add_assertion(Not(And(var["dc0a"], var["dc1s"], var["dc2i"], var["dc3l"], var["dr0r"], var["dr1m"], var["dr2c"], var["dr3g"])))
+# OPTIONAL: is the solution unique?
+msat.add_assertion(Not(And(var["sp0i"], var["sp1k"], var["sp2t"], var["sp3e"], var["sm0p"], var["sm1a"], var["sm2e"], var["sm3m"])))
 
-# final_answer = ["20th: ", "21st: ", "22nd: ", "23rd: "]
+final_answer = ["$25000: ", "$30000: ", "$35000: ", "$40000: "]
 
-# res = msat.solve()
-# if res:
-# 	sat_model = {el[0].symbol_name():el[1] for el in msat.get_model()}
-# 	for i in range(0,4):
-# 		for j in "alsi":
-# 			if sat_model["dc{}{}".format(i,j)] == Bool(True):
-# 				final_answer[i] = final_answer[i] + companies[j] + " - "
-# 		for j in "cgrm":
-# 			if sat_model["dr{}{}".format(i,j)] == Bool(True):
-# 				final_answer[i] = final_answer[i] + roles[j]
-# 	print("\n".join(final_answer))
-# else:
-# 	print("UNSAT")
-
+res = msat.solve()
+if res:
+	sat_model = {el[0].symbol_name():el[1] for el in msat.get_model()}
+	for i in range(0,4):
+		for j in "eikt":
+			if sat_model["sp{}{}".format(i,j)] == Bool(True):
+				final_answer[i] = final_answer[i] + people[j] + " - "
+		for j in "aemp":
+			if sat_model["sm{}{}".format(i,j)] == Bool(True):
+				final_answer[i] = final_answer[i] + majors[j]
+	print("\n".join(final_answer))
+else:
+	print("UNSAT")
