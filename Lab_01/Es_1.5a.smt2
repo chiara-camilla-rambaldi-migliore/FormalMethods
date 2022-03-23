@@ -1,3 +1,5 @@
+;coloring problem with 2 colors
+
 (declare-const r1 Bool)
 (declare-const r2 Bool)
 (declare-const r3 Bool)

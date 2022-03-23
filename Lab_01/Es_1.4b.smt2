@@ -1,5 +1,3 @@
-;Password lunga 3 numeri, il numero della password deve essere pari.
-
 ;Variables: a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3
 ;A = 1, B = 2, C = 3, D = 4
 
@@ -25,7 +23,7 @@
 (declare-const DD Bool)
 
 
-;the password should be even (pari)
+;the password should be even
 (assert (or b3 d3))
 
 
