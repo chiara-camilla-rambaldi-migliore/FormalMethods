@@ -59,7 +59,7 @@ for i in range(1, len(kakuro_map)):
             row_cells_to_sum[i][k].append(vars[f"x{i}{j}"])
 
 for i in range(1, len(kakuro_map)):
-    for k in range(len(assert_row_sums[i])):
+    for k in range(row_spaces[i]):
         msat.add_assertion(Equals(Int(assert_row_sums[i][k]), Plus(row_cells_to_sum[i][k])))
         msat.add_assertion(AllDifferent(row_cells_to_sum[i][k]))
 
@@ -84,21 +84,38 @@ for j in range(1, len(kakuro_map[0])):
             column_cells_to_sum[j][k].append(vars[f"x{i}{j}"])
 
 for i in range(1, len(kakuro_map[0])):
-    for k in range(len(assert_column_sums[i])):
-        msat.add_assertion(Equals(assert_column_sums[i][k], (Plus(column_cells_to_sum[i][k]))))
+    for k in range(column_spaces[i]):
+        msat.add_assertion(Equals(Int(assert_column_sums[i][k]), Plus(column_cells_to_sum[i][k])))
         msat.add_assertion(AllDifferent(column_cells_to_sum[i][k]))
 
 
 for i in range(1, len(kakuro_map)):
     for j in range(0, len(kakuro_map[0])):
         if(kakuro_map[i][j] == 0):
-            msat.add_assertion(LT(vars[f"x{i}{j}"], 10))
-            msat.add_assertion(GT(vars[f"x{i}{j}"], 0))
+            msat.add_assertion(LT(vars[f"x{i}{j}"], Int(10)))
+            msat.add_assertion(GT(vars[f"x{i}{j}"], Int(0)))
+
 
 res = msat.solve()
 
+
 if res:
+    solution = list()
     print("SAT")
-    print(msat.get_model())
+    sat_model = {el[0].symbol_name():el[1] for el in msat.get_model()}
+    for i in range(len(kakuro_map)):
+      row = list()
+      for j in range(len(kakuro_map[0])):
+        if(kakuro_map[i][j] == -1):
+          row.append("x ")
+        if(kakuro_map[i][j] == 0):
+          row.append("{} ".format(sat_model[f"x{i}{j}"]))
+        if(kakuro_map[i][j] > 0):
+          row.append(f"c{kakuro_map[i][j]}")
+
+      solution.append(row)
+    
+    for line in solution:
+      print(line)
 else:
     print("UNSAT")
