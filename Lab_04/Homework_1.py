@@ -1,4 +1,5 @@
 from pysmt.shortcuts import *
+from enum import Enum
 
 '''
 Kakuro is a puzzle in which one must put the numbers 1 to 9 in the different cells such that they satisfy certain constraints. 
@@ -15,24 +16,33 @@ x  9  34 4  x
 x  7  D  D  D
 x  19 D  D  D
 '''
+class CellType(Enum):
+  CONSTRAINT=0
+  EMPTY=1
+  NUMBER=2
+
+class Cell():
+  def __init__(self, cellType, row_c=0, column_c=0):
+    self.cellType = cellType
+    self.row_c = row_c
+    self.column_c = column_c
 
 kakuro_map = [
-    [-1, 9, 34, 4, -1],
-    [9, 0, 0, 0, -1],
-    [13, 0, 0, 0, -1],
-    [13, 0, 0, 11, 3],
-    [-1, 7, 0, 0, 0],
-    [-1, 19, 0, 0, 0]
+    [Cell(CellType.EMPTY), Cell(CellType.EMPTY), Cell(CellType.EMPTY), Cell(CellType.CONSTRAINT,0,23), Cell(CellType.CONSTRAINT, 0,4)],
+    [Cell(CellType.EMPTY), Cell(CellType.EMPTY), Cell(CellType.CONSTRAINT,9,6), Cell(CellType.NUMBER), Cell(CellType.NUMBER)],
+    [Cell(CellType.EMPTY), Cell(CellType.CONSTRAINT,10,4), Cell(CellType.NUMBER), Cell(CellType.NUMBER), Cell(CellType.NUMBER)],
+    [Cell(CellType.CONSTRAINT,14,0), Cell(CellType.NUMBER), Cell(CellType.NUMBER), Cell(CellType.NUMBER), Cell(CellType.EMPTY)],
+    [Cell(CellType.CONSTRAINT,4,0), Cell(CellType.NUMBER), Cell(CellType.NUMBER), Cell(CellType.EMPTY), Cell(CellType.EMPTY)]
 ]
 
-row_spaces = [0, 1, 1, 1, 1, 1]
-column_spaces = [0, 1, 1, 2, 1]
+row_spaces = [0, 1, 1, 1, 1]
+column_spaces = [0, 1, 1, 1, 1]
 
 vars = {}
 #i è la riga, j la colonna
 for i in range(0, len(kakuro_map)):
     for j in range(0, len(kakuro_map[0])):
-        if(kakuro_map[i][j] == 0):
+        if(kakuro_map[i][j].cellType == CellType.NUMBER):
             vars[f"x{i}{j}"] = Symbol(f"x{i}{j}", INT)
 
 
@@ -47,15 +57,13 @@ for i in range(1, len(kakuro_map)):
     assert_row_sums[i] = []
     k = -1
     for j in range(0, len(kakuro_map[0])):
-        if(kakuro_map[i][j] == -1):
-            continue
-        if(kakuro_map[i][j] != 0):
+        if(kakuro_map[i][j].cellType == CellType.CONSTRAINT and kakuro_map[i][j].row_c != 0):
             k+=1
             if(k>=row_spaces[i]):
                 break
-            assert_row_sums[i].append(kakuro_map[i][j])
+            assert_row_sums[i].append(kakuro_map[i][j].row_c)
             row_cells_to_sum[i].append([])
-        if(kakuro_map[i][j] == 0):
+        if(kakuro_map[i][j].cellType == CellType.NUMBER):
             row_cells_to_sum[i][k].append(vars[f"x{i}{j}"])
 
 for i in range(1, len(kakuro_map)):
@@ -72,15 +80,13 @@ for j in range(1, len(kakuro_map[0])):
     assert_column_sums[j] = []
     k = -1
     for i in range(0, len(kakuro_map)):
-        if(kakuro_map[i][j] == -1):
-            continue
-        if(kakuro_map[i][j] != 0):
+        if(kakuro_map[i][j].cellType == CellType.CONSTRAINT and kakuro_map[i][j].column_c != 0):
             k+=1
             if(k>=column_spaces[j]):
                 break
-            assert_column_sums[j].append(kakuro_map[i][j])
+            assert_column_sums[j].append(kakuro_map[i][j].column_c)
             column_cells_to_sum[j].append([])
-        if(kakuro_map[i][j] == 0):
+        if(kakuro_map[i][j].cellType == CellType.NUMBER):
             column_cells_to_sum[j][k].append(vars[f"x{i}{j}"])
 
 for i in range(1, len(kakuro_map[0])):
@@ -91,7 +97,7 @@ for i in range(1, len(kakuro_map[0])):
 
 for i in range(1, len(kakuro_map)):
     for j in range(0, len(kakuro_map[0])):
-        if(kakuro_map[i][j] == 0):
+        if(kakuro_map[i][j].cellType == CellType.NUMBER):
             msat.add_assertion(LT(vars[f"x{i}{j}"], Int(10)))
             msat.add_assertion(GT(vars[f"x{i}{j}"], Int(0)))
 
@@ -106,12 +112,12 @@ if res:
     for i in range(len(kakuro_map)):
       row = list()
       for j in range(len(kakuro_map[0])):
-        if(kakuro_map[i][j] == -1):
+        if(kakuro_map[i][j].cellType == CellType.EMPTY):
           row.append("x ")
-        if(kakuro_map[i][j] == 0):
+        if(kakuro_map[i][j].cellType == CellType.NUMBER):
           row.append("{} ".format(sat_model[f"x{i}{j}"]))
-        if(kakuro_map[i][j] > 0):
-          row.append(f"c{kakuro_map[i][j]}")
+        if(kakuro_map[i][j].cellType == CellType.CONSTRAINT):
+          row.append(f"c{kakuro_map[i][j].column_c}-{kakuro_map[i][j].row_c}")
 
       solution.append(row)
     
